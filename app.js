@@ -40,7 +40,7 @@ function main() {
     });
   });
 
-  var tweets = new twitter(getConfig());
+ var tweets = new twitter(getConfig());
   tweets.stream('statuses/filter', {track: '#yolo'}, function(stream) {
     stream.on('data', function(t) {
       console.log(t)
@@ -67,7 +67,7 @@ function getConfig() {
       consumer_key: process.env.TWITTER_CONSUMER_KEY,
       consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
       access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
-      access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
+      access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
     }
     console.log(config);
     return config;
@@ -94,7 +94,6 @@ function tweet(t, sockets) {
 
 function addLatest(msg) {
   latest.push(msg);
-  if (latest.length > dumpSize) archive();
 }
 
 if (! module.parent) {

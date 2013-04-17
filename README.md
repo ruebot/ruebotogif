@@ -22,18 +22,16 @@ RUEBOTOGIF stands on several giants shoulders, including:
 Install
 -------
 
-* install node and git
+* install node and git (note: there is a package name conflict in later Ubuntu versions, I recommend installing nodejs via [these instructions](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager#ubuntu-mint).)
 * `git clone https://github.com/ruebot/ruebotogif.git`
-* `cd wikistream`
+* `cd ruebotogif`
 * `npm install`
 * `cp config.json.tmpl config.json`
-* get [Twitter](https://dev.twitter.com/apps/new) credentials and add them to 
-  config.json
-  wikitweets can archive JSON there.
+* get [Twitter](https://dev.twitter.com/apps/new) credentials and add them to config.json.
 * `node app.js`
 * open http://localhost:3000/ in browser
 
-Licnse
+License
 ------
 
 ![CC0](http://i.creativecommons.org/p/zero/1.0/88x31.png "CC0")
