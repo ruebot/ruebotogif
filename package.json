@@ -1,0 +1,20 @@
+{
+  "engines": {
+    "node": "latest",
+    "npm": "latest"
+  },
+  "name": "ruebotogif",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "jsdom": "latest",
+    "express": "latest",
+    "socket.io": "latest",
+    "underscore": "latest",
+    "ntwitter": "latest",
+    "request": "latest",
+    "unshorten": "latest",
+    "xml2js": "latest",
+    "dateformat": "latest"
+  }
+}
