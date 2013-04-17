@@ -28,12 +28,12 @@ function main() {
   // heroku specific configuration
   io.configure('production', function() {
     io.set("transports", ["xhr-polling"]);
-    io.set("polling duration", 10);
+    io.set("polling duration", 1);
   });
 
   io.sockets.on('connection', function(socket) {
     // don't send all of the latest tweets it can cause a lag
-    _.each(latest.slice(-10), function(t) {socket.emit('tweet', t);});
+    _.each(latest.slice(-1), function(t) {socket.emit('tweet', t);});
     sockets.push(socket);
     socket.on('disconnect', function() {
       sockets = _.without(sockets, socket);
@@ -41,19 +41,11 @@ function main() {
   });
 
  var tweets = new twitter(getConfig());
-  tweets.stream('statuses/filter', {track: '#yolo'}, function(stream) {
-    stream.on('data', function(t) {
-      console.log(t)
-      tweet(t, sockets);
-    });
-    stream.on('error', function(err, code) {
-      console.log('uhoh got a twitter stream error: ' + err + ' ; ' + code);
-    });
-    stream.on('limit', function(l) {
-      console.log('whoops. we got limited by twitter: ' + l);
-    });
-  });
-
+  //q=%40ruebot%20*.gif
+  //tweets.stream('statuses/filter', {track: '@ruebot AND gif'}, function(stream) {
+  tweets.search('@ruebot AND gif', {}, function(err, data) {
+      console.log(data);
+      });
   server.listen(process.env.PORT || config.port || 3000);
 }
 
